@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "wezvatech-2026-tfstate"
+    bucket         = "project-aibootcamp-2026-infra"
     key            = "product-name/envs/uat_iam.tfstate"
     region         = "ap-south-1"
     encrypt        = true
