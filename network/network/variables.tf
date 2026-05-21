@@ -1,13 +1,13 @@
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#
 
 # VPC Variables
 variable "name" {
   description = "Name to be used on all the resources as identifier"
   type        = string
-  default     = "WEZVATECH"
+  default     = "AIBOOTCAMP"
 }
 
 variable "vpc_cidr" {
@@ -113,6 +113,6 @@ variable "vpc_name" {
 }
 
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#

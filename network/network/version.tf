@@ -1,6 +1,6 @@
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#
 
 # Terraform version
@@ -16,6 +16,6 @@ terraform {
 }
 
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#
