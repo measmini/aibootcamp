@@ -12,7 +12,7 @@ provider "aws" {
 variable "myhosts" {
   type = map
   default = {
-    TESTMACHINE = "t2.medium"
+    TESTMACHINE = "t2.micro"
   }
 }
 
