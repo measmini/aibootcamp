@@ -1,6 +1,6 @@
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#
 
 #--------------
@@ -15,7 +15,7 @@ resource "aws_vpc" "my_vpc" {
     {
        Name        = "fintech-${var.vpc_name}-vpc"
        Environment = "production"
-       Org         = "wezvatech" # Keep the org name here
+       Org         = "aibootcamp" # Keep the org name here
   }
   )
 }
@@ -65,7 +65,7 @@ resource "aws_route_table" "public" {
     vpc_id = aws_vpc.my_vpc.id
 
     tags = {
-        Name = "DEMO Public RouteTable - WEZVATECH"
+        Name = "DEMO Public RouteTable - AIBOOTCAMP"
     }
 }
 
@@ -151,7 +151,7 @@ resource "aws_route_table" "private" {
     vpc_id = aws_vpc.my_vpc.id
 
     tags = {
-        Name = "DEMO private RouteTable - WEZVATECH"
+        Name = "DEMO private RouteTable - AIBOOTCAMP"
     }
 }
 
@@ -282,6 +282,6 @@ resource "aws_vpc_endpoint" "demo" {
 
 
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#

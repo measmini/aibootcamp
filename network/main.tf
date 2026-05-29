@@ -1,6 +1,6 @@
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#
 
 provider "aws" {
@@ -102,6 +102,6 @@ module "fintech_vpcs" {
 }
 
 #---------------------------------------------#
-# Author: Adam WezvaTechnologies
-# Call/Whatsapp: +91-9739110917
+# Author: Asmini AIBOOTCAMP
+# Call/Whatsapp: +91-9999281545
 #---------------------------------------------#
