@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "project-aibootcamp-2026-infra"
-    key            = "replication/envs/qa_dr.tfstate"
+    key            = "rep_dr/envs/qa_dr.tfstate"
     region         = "ap-south-1"
     encrypt        = true
     
