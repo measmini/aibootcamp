@@ -3,12 +3,12 @@
 # Build the VPCs, EKS, and Databases. Manage KMS Keys and RDS Ops
 # Admin access for VPCs/EKS but explicitly CANNOT view raw customer data(PII).
 module "platform_team_setup" {
-  create_role = var.enable_platform_role 
+  create_role = var.enable_platform_role
 
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
   version = "~> 5.0"
 
-  role_name   = "Fintech-Platform-Admin"
+  role_name = "Fintech-Platform-Admin"
 
   # 1. Manage the Networking and EKS "Pipes"
   custom_role_policy_arns = [
@@ -58,38 +58,38 @@ module "product_team_setup" {
   role_name   = "AppTeam-${var.env_type}-Role"
 
   inline_policy_statements = [
-  {
-    sid    = "EKSAndRDSLogic"
-    effect = "Allow"
-    # Logic: If Prod/UAT, give Read-Only. If QA/Dev, give Full Access.
-    actions = (var.env_type == "prod" || var.env_type == "uat") ? [
-        "eks:Describe*", 
-        "eks:List*", 
+    {
+      sid    = "EKSAndRDSLogic"
+      effect = "Allow"
+      # Logic: If Prod/UAT, give Read-Only. If QA/Dev, give Full Access.
+      actions = (var.env_type == "prod" || var.env_type == "uat") ? [
+        "eks:Describe*",
+        "eks:List*",
         "eks:AccessKubernetesApi",
         "rds:Describe*",
         "ecr:BatchGetImage",
         "ecr:GetDownloadUrlForLayer"
-      ] : [
-        "eks:*", 
-        "rds:*", 
+        ] : [
+        "eks:*",
+        "rds:*",
         "ecr:*"
       ]
-    resources = ["*"]
-  },
-  {
-    sid    = "DatabaseConnect"
-    effect = "Allow"
-    actions   = ["rds-db:connect"]
-    # In Fintech, even in QA, we usually restrict DB connection to a specific user
-    resources = ["arn:aws:rds-db:*:*:dbuser:*/${var.env_type}_user"]
-  },
-  {
-    sid    = "FintechGuardrail"
-    effect = "Deny"
-    # Strict Deny: Networking is always off-limits for the App Team
-    actions   = ["ec2:DeleteVpc", "ec2:DeleteSubnet", "ec2:DeleteTransitGateway", "ec2:TerminateInstances"]
-    resources = ["*"]
-  }
+      resources = ["*"]
+    },
+    {
+      sid     = "DatabaseConnect"
+      effect  = "Allow"
+      actions = ["rds-db:connect"]
+      # In Fintech, even in QA, we usually restrict DB connection to a specific user
+      resources = ["arn:aws:rds-db:*:*:dbuser:*/${var.env_type}_user"]
+    },
+    {
+      sid    = "FintechGuardrail"
+      effect = "Deny"
+      # Strict Deny: Networking is always off-limits for the App Team
+      actions   = ["ec2:DeleteVpc", "ec2:DeleteSubnet", "ec2:DeleteTransitGateway", "ec2:TerminateInstances"]
+      resources = ["*"]
+    }
   ]
 
   trusted_role_arns = ["arn:aws:iam::${var.account_id}:root"]
@@ -102,9 +102,9 @@ module "cicd_pipeline_setup" {
   version = "~> 5.0"
 
   create_role = var.enable_cicd_role
-  
+
   # Dynamic naming helps distinguish which account this role belongs to
-  role_name   = "Fintech-CI-CD-Deployer-${var.env_type}"
+  role_name = "Fintech-CI-CD-Deployer-${var.env_type}"
 
   provider_url = "token.actions.githubusercontent.com" # Example for GitHub Actions
 
@@ -136,7 +136,7 @@ module "cicd_pipeline_setup" {
       actions = (var.env_type == "prod" || var.env_type == "uat") ? [
         "eks:DescribeCluster",
         "eks:UpdateClusterConfig"
-      ] : [
+        ] : [
         "eks:*" # Full EKS control for Dev/QA automation
       ]
       resources = ["*"]
